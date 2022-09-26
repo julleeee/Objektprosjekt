@@ -1,2 +1,0 @@
-# ignore saves folder
-src/main/java/minesweeper/saves
