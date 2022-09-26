@@ -1,2 +1,5 @@
 # ignore saves folder
 src/main/java/minesweeper/saves
+
+# ignore maven build folder
+target/
