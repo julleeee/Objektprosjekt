@@ -8,8 +8,8 @@ public class Tile {
 	private int y;
 	private int x;
 	private int adjacencyNumber = 0;
-	private char type = '□';
-	public static final List<Character> legitTypes = List.of('□', '¤', '1', '2', '3', '4', '5', '6', '7', '8');
+	private char type = 'O';
+	public static final List<Character> legitTypes = List.of('O', 'x', '1', '2', '3', '4', '5', '6', '7', '8');
 	
 	private boolean shown = false;	
 	private Image image;
@@ -21,7 +21,7 @@ public class Tile {
 	}
 	
 	public void setMine() {
-		type = '¤';
+		type = 'x';
 	}
 	
 	public void setShown() {
@@ -29,11 +29,11 @@ public class Tile {
 	}
 	
 	public boolean isMine() {
-		return type == '¤';
+		return type == 'x';
 	}
 	
 	public boolean isSpace() {
-		return type == '□';
+		return type == 'O';
 	}
 	
 	public boolean isShown() {
@@ -77,12 +77,12 @@ public class Tile {
 		
 		if (this.isShown()) {
 			switch (image) {
-			case '¤' :
+			case 'x' :
 				Image ImageMine = new Image(getClass().getResourceAsStream("/Minesweeper_pics/ghostyghost.png"));
 
 				this.image = ImageMine;
 				break;
-			case '□' :
+			case 'O' :
 				Image ImageSpace = new Image(getClass().getResourceAsStream("/Minesweeper_pics/Uncovered.jpg"));
 				this.image = ImageSpace;
 				break;

@@ -1,4 +1,3 @@
-
 package minesweeper;
 
 import java.io.InputStream;
@@ -56,7 +55,7 @@ public class GameFileSupport implements IGameFileReading {
 			for (int y = 0; y < numberOfRow; y++) {
 				for (int x = 0; x < numberOfCol; x++) {
 					char symbol = type.charAt(y * numberOfCol + x);
-					if (symbol == '¤')
+					if (symbol == 'x')
 						mineList.add(board.getTile(y, x));
 					board.getTile(y, x).setType(symbol);
 					
