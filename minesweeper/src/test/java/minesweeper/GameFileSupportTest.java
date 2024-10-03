@@ -17,6 +17,11 @@ import org.junit.jupiter.api.DisplayName;
 
 import org.junit.jupiter.api.Test;
 
+import minesweeper.core.Board;
+import minesweeper.core.GameFileSupport;
+import minesweeper.core.IGameFileReading;
+import minesweeper.core.Tile;
+
 public class GameFileSupportTest {
 	
 	private Board board;

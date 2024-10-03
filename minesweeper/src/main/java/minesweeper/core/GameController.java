@@ -1,4 +1,4 @@
-package minesweeper;
+package minesweeper.core;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

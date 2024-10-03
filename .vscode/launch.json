@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "GameApp",
+            "request": "launch",
+            "mainClass": "minesweeper/minesweeper.core.GameApp",
+            "projectName": "minesweeper"
+        },
+        {
+            "type": "java",
             "name": "Launch GameApp",
             "request": "launch",
             "mainClass": "minesweeper/minesweeper.GameApp",

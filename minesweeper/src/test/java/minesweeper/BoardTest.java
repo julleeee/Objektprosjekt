@@ -9,6 +9,9 @@ import org.junit.jupiter.api.DisplayName;
 
 import org.junit.jupiter.api.Test;
 
+import minesweeper.core.Board;
+import minesweeper.core.Tile;
+
 public class BoardTest {
 	
 	private Board board;

@@ -1,4 +1,4 @@
-package minesweeper;
+package minesweeper.core;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,8 @@ public class Board {
     private boolean GameWon = false;
     private boolean GameOver = false;
     private List<Tile> mineList = new ArrayList<Tile>();
+
+	public Board() {}
 	
 	public Board(int numberOfRow, int numberOfCol, int numberOfMines) {
 		checkValidBoardSize(numberOfRow, numberOfCol);
@@ -123,17 +125,76 @@ public class Board {
 	public Tile[][] getGameBoard() {
 		return gameBoard;
 	}
+
+	public String writeTypeString() {
+		String typeString = "";
+		for (int y = 0; y < getNumberOfRow(); y++) {
+        	for (int x = 0; x < getNumberOfCol(); x++) {
+   				typeString = typeString + (getTile(y, x).getType());    				
+   			}
+        }
+		return typeString;
+	}
+
+	public void readTypeString(String typeString) {
+		List<Tile> newMineList = new ArrayList<Tile>();
+		for (int y = 0; y < numberOfRow; y++) {
+			for (int x = 0; x < numberOfCol; x++) {
+				char symbol = typeString.charAt(y * numberOfCol + x);
+				if (symbol == 'x')
+					mineList.add(getTile(y, x));
+				getTile(y, x).setType(symbol);
+				
+			}
+		}
+		setMineList(newMineList);
+	}
+
+	public String writeShownString() {
+		String shownString = "";
+		for (int y = 0; y < getNumberOfRow(); y++) {
+			for (int x = 0; x < getNumberOfCol(); x++) {
+				if (getTile(y, x).isShown())
+					shownString = shownString + 's';
+				else
+					shownString = shownString + 'o';
+			}
+		}
+		return shownString;
+	}
+
+	public void readShownString(String shownString) {
+		for (int y = 0; y < numberOfRow; y++) {
+			for (int x = 0; x < numberOfCol; x++) {
+				char symb = shownString.charAt(y * numberOfCol + x);
+				if (symb == 's')
+					getTile(y, x).setShown();
+			}
+		}
+	}
 	
 	public int getNumberOfRow() {
 		return numberOfRow;
+	}
+
+	public void setNumberOfRow(int numberOfRow) {
+		this.numberOfRow = numberOfRow;
 	}
 	
 	public int getNumberOfCol() {
 		return numberOfCol;
 	}
+
+	public void setNumberOfCol(int numberOfCol) {
+		this.numberOfCol = numberOfCol;
+	}
 	
 	public int getNumberOfMines() {
 		return numberOfMines;
+	}
+
+	public void setNumberOfMines(int numberOfMines) {
+		this.numberOfMines = numberOfMines;
 	}
 	
 	public void setMineList(List<Tile> mineList) {
@@ -174,32 +235,5 @@ public class Board {
 	
 	private boolean isTile(int y, int x) {
 		return y >= 0 && x >= 0 && y < getNumberOfRow() && x < getNumberOfCol();
-	}
-	
-	@Override
-	public String toString() {
-		String boardString = "";
-		
-		for (int y = 0; y < getNumberOfRow(); y++) {
-			for (int x = 0; x < getNumberOfCol(); x++) {
-				
-				boardString += getTile(y, x).getType();
-				
-				if (getTile(y, x).isShown()) {
-					boardString += getTile(y, x);
-					boardString += "   ";
-				}else {
-					boardString += "▉";
-					boardString += "   ";
-				}
-			}
-			boardString += "\n";
-		}
-		if (getGameWon()) {
-			boardString += "\n\nGame won, you sweeped all the mines";
-		} else if (getGameOver()) {
-			boardString += "\n\n Game over, you just stepped on a mine";
-        }
-		return boardString;
 	}
 }
